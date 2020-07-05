@@ -1,0 +1,170 @@
+{% include 'base.html' %}
+
+{% block title %}  {% endblock %}
+{% block content %}
+<!--<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles.css') }}"> 5,7,   8 is final-->
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+<div class="page">
+    <p class="text1">Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus. 
+        Most people infected with the COVID-19 virus will experience mild to moderate respiratory 
+        disease and recover without any special treatment being needed. Older people and those with underlying 
+        health conditions such as cardiovascular disease, diabetes, 
+        chronic respiratory disease and cancer are more likely to experience serious illness.</p>
+    <div class="summary-info"> 
+        <div class = "summary-child">
+            <div class="plots">
+                {{sumw | safe}}
+            </div>
+            <a href="#real_world">Explore</a>
+        </div>
+        <div class = "summary-child">
+            <div class="plots">
+                {{sumi | safe}}
+                
+            </div>
+            <a href="#real_india">Explore</a>
+        </div>
+    </div>
+
+    <p class="text1">Being well educated about the COVID-19 virus, the disease it causes and how it spreads 
+        is the best way to avoid and slow down transmission. 
+        Secure yourself and others from contamination by washing your hands or 
+        regularly using an alcohol based rub frequently and not touching your face. </p> 
+
+    <p class="text1">The COVID-19 virus spreads primarily through droplets of saliva or discharge from the nose 
+        when an infected person coughs or sneezes, so it’s important that 
+        you also practice respiratory etiquette (for example, by coughing into a flexed elbow).</p>
+        
+    <h2 class="table-heading"><u>Overview of COVID-19 Cases - World</u></h2> 
+    <div id="real_world" class="total-cases-info"> 
+        <div class = "total-cases-child child1">
+            <span class="chill">Total Cases</span>
+            <h2>
+                {{total_world[0] | safe}}
+            </h2>
+        </div>
+        <div class = "total-cases-child child2">
+            <span class="chill">Active</span>
+            <h2>
+                {{total_world[1] | safe}}
+            </h2>
+        </div>
+        <div class = "total-cases-child child3">
+            <span class="chill">Recovered</span>
+            <h2>
+                {{total_world[2] | safe}}
+            </h2>
+        </div>
+        <div class = "total-cases-child child4">
+            <span class="chill">Deaths</span>
+            <h2>
+                {{total_world[3] | safe}}
+            </h2>
+        </div>
+    </div>
+    
+    <h2 class="table-heading"><u>Real-time updates of Cases - World</u></h2>
+    <div class="table-data">
+        {{tableworld | safe}};
+    </div>
+
+    <h2 class="table-heading"><u>30 Worst-Hit Countries in World</u></h2>
+    <div class="plots">
+        {{figure1 | safe}}
+    </div>
+
+    <p class="text">USA outweighs all other countries by a significant number and dominates the plot, 
+        thus is the worst hit country</p>
+
+    <h2 class="table-heading"><u>Tests conducted per Million in Top 30 Countries</u></h2>
+    <div class="plots">
+        {{plottests | safe}}
+    </div>
+    <p class="text">The above picture shows UAE, UK, Russia and Qatar are leading in terms of tests conducted per Million of people. 
+        It can be observed that small countries (like UAE) have spent a lot conducting tests per million of people and 
+        are leading as compared to a country like India which has a population of more than 1.3 billion 
+        but conducted hardly any tests.</p>
+
+    <h2 class="table-heading"><u>Severity of Covid-19 Impact in Top 30 Countries</u></h2>
+    <div class="plots">
+        {{plotseverity | safe}}
+    </div>
+    <p class="text">According to the above plot, Belgium is the worst hit country (the severity of hit is way above USA). 
+        This is beacuse of the low population of the countries and high number of confirmed cases and deaths. 
+        We can also see Qatar is doing great to keep the death rate low 
+        given the exteremely high number of confirmed cases per million.</p>
+    
+
+    <h2 class="table-heading"><u>Overview of COVID-19 Cases - India</u></h2>
+    <div id="real_india" class="total-cases-info"> 
+        <div class = "total-cases-child child1">
+            <span class="chill">Total Cases</span>
+            <h2>
+                {{total_india[0] | safe}}
+            </h2>
+        </div>
+        <div class = "total-cases-child child2">
+            <span class="chill">Active</span>
+            <h2>
+                {{total_india[1] | safe}}
+            </h2>
+        </div>
+        <div class = "total-cases-child child3">
+            <span class="chill">Recovered</span>
+            <h2>
+                {{total_india[2] | safe}}
+            </h2>
+        </div>
+        <div class = "total-cases-child child4">
+            <span class="chill">Deaths</span>
+            <h2>
+                {{total_india[3] | safe}}
+            </h2>
+        </div>
+    </div>
+    <h2 class="table-heading"><u>Real-time updates of Cases - India</u></h2>
+    <div class="table-data">
+        {{tableindia | safe}};
+    </div>
+
+    <h2 class="table-heading"><u>State-Wise Cases in India</u></h2>
+    <div class="plots">
+        {{figure2 | safe}}
+    </div>
+
+    <p class="text">Maharashtra outweighs all other states by a significant number and dominates the plot, 
+        thus is the worst hit state in India</p>
+    
+    <h2 class="table-heading"><u>Recovery Rate of the States</u></h2>
+    <div class="plots">
+        {{plotr | safe}}
+    </div>
+    <p class="text">Chandigarh has highest recovery rate in the Country. States like Uttrakhand, Rajasthan are also doing well in terms of recovery.</p>
+    
+    <h2 class="table-heading"><u>Daily trends in India</u></h2>
+    <div class="plots">
+        {{plotd | safe}}
+    </div>
+    <p class="text2"> Source last updated on 4 July,2020</p>
+    <p class="text">The rise in the number of cases was controlled in the months of March and April. 
+        However, there has been drastic rise in the number of cases in June 
+        and the cases are still increasing daily.</p>
+
+    <h2 class="table-heading"><u>Age Group wise distribution of Covid-19 Cases</u></h2>
+    <div class="plots">
+        {{plota | safe}}
+    </div>
+    <p class="text2"> Source last updated on 4 July,2020</p>
+    <p class="text">People in the age group 20-50 are most affected from coronavirus. Elderly people are also among the majority group of peple that have contracted Coronavirus.</p>
+</div>
+
+<footer>
+    <p class="textf">Developed by DHRUVI MODI as a part of the COVID-19 Data Analysis project (AIML Community)</p>
+</footer>
+{% endblock %}
+
+{% block body %}
+    
+{% endblock %}
